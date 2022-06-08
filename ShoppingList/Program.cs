@@ -7,12 +7,28 @@ using System.Threading.Tasks;
 
 namespace ShoppingList
 {
-    
+
     class Program
     {
         static void Main(string[] args)
         {
             string file = @"C:\Users\Miikka\source\repos\ShoppingList\files\shoppingList.txt";
+
+            try
+            {
+                // Avataan tekstitiedosto käyttämällä stream readeriä.
+                using (var sr = new StreamReader(@"C:\Users\Miikka\source\repos\ShoppingList\files\shoppingList.txt"))
+                {
+                    // Luetaan streami stringinä ja kirjoitetaan stringi konsoliin.
+                    Console.WriteLine(sr.ReadToEnd());
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Tiedostoa ei voitu lukea:");
+                Console.WriteLine(e.Message);
+            }
+
 
             while (true)
             {
